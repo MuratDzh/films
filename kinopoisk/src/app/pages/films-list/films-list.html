@@ -1,0 +1,32 @@
+<app-filter-layout (formValue)="onFilteredOpt($event)"></app-filter-layout>
+
+<div class="layout">
+
+        @if((filteredFilms$|async); as films){
+            
+            @for (film of films; track $index) {
+                
+                <p>{{film.nameRu}}</p>
+                <img [src]="film.posterUrlPreview" [alt]="film.nameRu">
+                
+            }
+
+        } @else {
+            
+            <spinner></spinner>
+        }
+    
+     <!-- @else {
+
+         @if((films$|async); as films){
+            
+            @for (film of films; track $index) {
+                
+                <p>{{film.nameRu}}</p>
+                <img [src]="film.posterUrlPreview" [alt]="film.nameRu">
+                
+            }
+
+        }
+    } -->
+</div>

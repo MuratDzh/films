@@ -1,0 +1,71 @@
+<div class="filters_wrapper">
+    <form class="filter-form" [formGroup]="form">
+        
+        <select formControlName="countries">
+            <option value="">Все страны</option>
+             @for (country of countries; track $index) {
+                    
+                <option [value]="country[0]">{{country[1]}}</option>
+            }
+        </select>
+      
+        <select formControlName="genres">
+            <option value="">Все жанры</option>
+               @for (genre of genres; track $index) {
+                    
+                <option [value]="genre.id">{{genre.genre}}</option>
+            }
+        </select>
+        
+        <select formControlName="type">
+             @for (type of types; track $index) {
+                    
+                <option [value]="type[0]">{{type[1]}}</option>
+            }
+        </select>
+       
+        <select formControlName="order">
+
+             @for (order of orders; track $index) {
+                    
+                <option [value]="order[0]">{{order[1]}}</option>
+            }
+        </select>
+        
+        <select formControlName="ratingFrom">
+            <option value=""></option>
+             @for (rating of ratings; track $index) {
+                    
+                <option [value]="rating">{{rating}}</option>
+            }
+        </select>
+        
+        <select formControlName="ratingTo">
+            <option value=""></option>
+             @for (rating of ratings; track $index) {
+                    
+                <option [value]="rating">{{rating}}</option>
+            }
+        </select>
+       
+        <select formControlName="yearFrom">
+            <option value="">Все годы</option>
+
+             @for (year of years; track $index) {
+                    
+                <option [value]="year">{{year}}</option>
+            }
+        </select>
+
+        <select formControlName="yearTo">
+            <option value="">Все годы</option>
+
+            @for (year of years; track $index) {
+                    
+                <option [value]="year">{{year}}</option>
+            }
+        </select>
+            
+        <input type="text" formControlName="keyword">
+    </form>
+</div>
