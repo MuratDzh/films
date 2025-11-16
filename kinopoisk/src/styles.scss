@@ -1,10 +1,50 @@
 
+
 // Include theming for Angular Material with `mat.theme()`.
 // This Sass mixin will define CSS variables that are used for styling Angular Material
 // components according to the Material 3 design spec.
 // Learn more about theming and how to use it for your application's
 // custom components at https://material.angular.dev/guide/theming
 @use '@angular/material' as mat;
+
+@import './app/styles/normalize';
+
+@font-face {
+  font-family: "Lato";
+  src: url(../public/fonts/Lato-Regular.woff2) format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Roboto";
+  src: url(../public/fonts/Roboto.woff2) format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Open Sans";
+  src: url(../public/fonts/OpenSans.woff2) format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Agan";
+  src: url(../public/fonts/Agan45.woff2) format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Agan";
+  src: url(../public/fonts/Agan75.woff2) format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
 
 html {
   @include mat.theme((
@@ -15,6 +55,9 @@ html {
     typography: Roboto,
     density: 0,
   ));
+
+  
+
 }
 
 body {
@@ -26,14 +69,32 @@ body {
   // Set a default background, font and text colors for the application using
   // Angular Material's system-level CSS variables. Learn more about these
   // variables at https://material.angular.dev/guide/system-variables
-  background-color: var(--mat-sys-surface);
-  color: var(--mat-sys-on-surface);
-  font: var(--mat-sys-body-medium);
-
+  // background-color: var(--mat-sys-surface);
+  background-color: rgb(1, 1, 1);
+  // color: var(--mat-sys-on-surface);
+  color: white;
+  // font: var(--mat-sys-body-medium);
+  
   // Reset the user agent margin.
   margin: 0;
 }
 /* You can add global styles to this file, and also import other style files */
 
+*::-webkit-scrollbar {
+  width: 0.4rem;
+  background-color: #f9f9fd;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 0.2rem;
+  background-color: rgb(140, 140, 140);
+}
+
+*::-webkit-scrollbar-track {
+  border-radius: 0.2rem;
+  background-color: white;
+}
+
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: "Roboto", sans-serif; font-weight: 400; }
+h1, h2, h3, h4, h5, h6 {font-family: "Open Sans", sans-serif; font-weight: 600;}

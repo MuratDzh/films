@@ -1,0 +1,70 @@
+:host{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 4rem;
+}
+
+.search-wrapper{
+    position: relative;
+}
+
+
+.films-list{
+    top: 2.5rem;
+    position: absolute;
+    padding: 0.7rem;
+    background-color: white;
+    color: black;
+    width: 100%;
+    border-radius: 1rem;
+}
+
+.film-item{
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    margin-bottom: 0.5rem;
+
+    &:hover{
+        background-color: rgb(140, 140,140);
+        color: white;
+    }
+}
+
+.all-resalt{
+    background-color: black;
+    color: white;
+    text-align: center;
+    margin-bottom: 0;
+    cursor: pointer;
+}
+
+.link{
+    display: block;
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+    
+    &:visited{
+        text-decoration: none;
+    }
+}
+
+.hide{
+    display: none;
+}
+
+.logo{
+    text-decoration: none;
+    color: white;
+
+    &:visited{
+        text-decoration: none;
+    }
+}
+
+@media(max-width: 680px){
+    :host{
+        height: 3rem;
+    }
+}

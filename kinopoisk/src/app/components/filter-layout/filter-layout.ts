@@ -41,7 +41,7 @@ export class FilterLayout implements OnInit {
   ]
   years: number[] = []
   ratings: number[] = []
-  orders = [["RATING", "Рейтинг"], ["NUM_VOTE", "Отзывам"], ["YEAR", "Год"]]
+  orders = [["RATING", "По рейтингу"], ["NUM_VOTE", "По отзывам"], ["YEAR", "По годам"]]
   types = [["FILM", "Фильмы"], ["TV_SHOW", "ТВ шоу"], ["TV_SERIES", "ТВ сериалы"], ["MINI_SERIES", "Мини сериалы"], ["ALL", "Все типы"],]
 
   form = this.fb.nonNullable.group<IFilterFormOpt>({
@@ -65,8 +65,6 @@ export class FilterLayout implements OnInit {
     this.form.valueChanges.pipe(
       tap(console.log),
       tap(()=>this.onFormValue()),
-      // switchMap(()=>this.filmsService.getFilteredFilms(this.form.value as IFilterFormOpt)),
-      // tap(console.log),
       takeUntilDestroyed()
     )
     .subscribe()
@@ -87,6 +85,10 @@ export class FilterLayout implements OnInit {
     console.log(this.form.value);
     
     this.formValue.emit(this.form.value as IFilterFormOpt)
+  }
+
+  onReset(){
+    this.form.reset()
   }
 
 }

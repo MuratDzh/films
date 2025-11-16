@@ -1,0 +1,39 @@
+.input_wrapper{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: 1.5px solid rgb(140, 140, 140);
+    padding: 0.2rem 0.7rem;
+    border-radius: 1.2rem;
+    color: rgb(140, 140, 140);
+
+    &:hover,
+    &:has(.search-input:focus){
+       border-color: white; 
+       color: white;
+    }
+}
+
+.search-img{
+    width: 1.5rem;
+}
+
+.search-input{
+    border: none;
+    background-color: transparent;
+    color: white;
+    width: 20dvw;
+
+    &:hover,
+    &:focus{
+        outline: none;
+        border: none;
+    }
+
+}
+
+@media(max-width: 460px){
+    .search-input{
+        width: 25dvw;
+    }
+}

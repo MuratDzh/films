@@ -1,1 +1,57 @@
-<p>film works!</p>
+@if(film$|async; as film){
+
+    <!-- <img [src]="film.posterUrl" alt="posterUrl"> -->
+    <div class="poster-and-info_wrapper">
+        <div class="poster_wrapper">
+            <img [src]="film.posterUrlPreview" alt="posterUrlPreview" width="360" height="540">
+        </div>
+        <div class="info_wrapper">
+            <h1 class="mb2rem">{{film.nameRu||film.nameEn||film.nameOriginal}}</h1>
+            <div class="short-description_wrapper">
+                <h3>О фильме</h3>
+                <table>
+                    <tbody >
+                        <tr class="table-tr">
+                            <td>Год</td>
+                            <td>{{film.year}}</td>
+                        </tr>
+                        <tr class="table-tr">
+                            <td>Время</td>
+                            <td>{{film.filmLength ?? "нет данных"}}</td>
+                        </tr>
+                        <tr class="table-tr">
+                            <td>Страна</td>
+                            <td>
+                                @for (country of film.countries; track $index) {
+                                    <span class="span country">{{country.country}}</span>
+                                }
+                            </td>
+                        </tr>
+                        <tr class="table-tr">
+                            <td>Жанр</td>
+                            <td>
+                                @for (genre of film.genres; track $index) {
+                                    <span class="span genre">{{genre.genre}}</span>
+                                }
+                            </td>
+                        </tr>
+                        <tr class="table-tr">
+                            <td>Рейтинг Imdb</td>
+                            <td>{{film.ratingImdb}}</td>
+                        </tr>
+                        <tr class="table-tr">
+                            <td>Рейтинг Кинопоиск</td>
+                            <td>{{film.ratingKinopoisk}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="discription_wrapper">
+        <h2>Описание</h2>
+        <p>{{film.description}}</p>
+    </div>
+}

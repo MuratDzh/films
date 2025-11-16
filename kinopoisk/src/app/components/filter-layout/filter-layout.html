@@ -33,7 +33,7 @@
         </select>
         
         <select formControlName="ratingFrom">
-            <option value=""></option>
+            <option value="">От</option>
              @for (rating of ratings; track $index) {
                     
                 <option [value]="rating">{{rating}}</option>
@@ -41,7 +41,7 @@
         </select>
         
         <select formControlName="ratingTo">
-            <option value=""></option>
+            <option value="">До</option>
              @for (rating of ratings; track $index) {
                     
                 <option [value]="rating">{{rating}}</option>
@@ -66,6 +66,7 @@
             }
         </select>
             
-        <input type="text" formControlName="keyword">
+        <input type="text" formControlName="keyword" placeholder="Содержит ...">
+        <button class="btn" type="reset" (click)="onReset()">Сбросить</button>
     </form>
 </div>

@@ -9,6 +9,7 @@ export interface IGenre{
 export type FilmType = "FILM"|"TV_SHOW "|"TV_SERIES"|"MINI_SERIES"|"ALL";
 
 export interface IFilm {
+    filmId:number,
     kinopoiskId: number,
     imdbId: null|number,
     nameRu: null|string,

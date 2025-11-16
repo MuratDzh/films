@@ -1,2 +1,35 @@
-<p>header works!</p>
-<app-search-input></app-search-input>
+<a [routerLink]="'/'" class="logo">
+    <h2>КИНОПОИСК</h2>
+</a>
+<div class="search-wrapper">
+    <app-search-input #input class="search-input" (onSearchWord)="onSearchInput($event)"></app-search-input>
+
+    @if(searchedFilms$|async; as films){
+
+        @if (films.films) {
+
+            <ul class="films-list" [ngClass]="{hide: isHidden()}">
+
+                @for (film of films.films|slice:0:5; track $index) {
+
+                    <li>
+                        <a [routerLink]="`film/${film.filmId}`" class="link">
+                            <div class="film-item">
+                                <span>{{film.nameEn||film.nameRu||film.nameOriginal}}</span>
+                            </div>
+                        </a>
+                    </li>
+                }
+
+                <li>
+                    <a >
+                        <div class="film-item all-resalt">
+                            <span>Показать весь список</span>
+                        </div>
+                    </a>
+                </li>
+
+            </ul>
+        }
+    }
+</div>
