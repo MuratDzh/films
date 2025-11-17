@@ -13,7 +13,8 @@ export class FilmsService {
   private url = "https://kinopoiskapiunofficial.tech/api";
 
   filteredFilmsSub = new BehaviorSubject<IFilm[]|null>(null)
-  currentPage = signal(1)
+  currentSearchedFilmsPage = signal(1)
+  currentFilteredFilmsPage = signal(1)
   pages = signal(1)
 
   searchedFilmsSub = new BehaviorSubject<ISearchFilmsRes|null>(null)
@@ -36,7 +37,7 @@ export class FilmsService {
       }
     }).pipe(
       tap(v => {
-        this.currentPage.set(page)
+        this.currentFilteredFilmsPage.set(page)
         this.pages.set(v.totalPages)
         this.filteredFilmsSub.next(v.items)
       })
@@ -59,7 +60,7 @@ export class FilmsService {
       }
     }).pipe(tap(v => {
       this.isSearched = true
-      this.currentPage.set(page)
+      this.currentSearchedFilmsPage.set(page)
       this.pages.set(v.pagesCount)
       this.searchedFilmsSub.next(v)}))
   }

@@ -32,7 +32,7 @@ export class FilmsList {
       this.onFilteredOpt()
     } else {
       this.filteredFilms$ = this.filmsService.filteredFilmsSub.asObservable() as Observable<IFilm[]>
-      this.currentPage = this.filmsService.currentPage()
+      this.currentPage = this.filmsService.currentFilteredFilmsPage()
       this.pages = this.filmsService.pages()
     }
   }

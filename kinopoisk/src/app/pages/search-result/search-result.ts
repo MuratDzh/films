@@ -38,7 +38,7 @@ export class SearchResult implements OnDestroy {
      if(!this.filmsService.searchedFilmsSub.value){
     } else {
       this.searchedFilms$ = this.filmsService.searchedFilms
-      this.currentPage = this.filmsService.currentPage
+      this.currentPage = this.filmsService.currentSearchedFilmsPage
       this.pages = this.filmsService.pages
     }
   }

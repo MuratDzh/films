@@ -1,7 +1,7 @@
 import { Component, HostListener, inject, OnDestroy, signal, ViewChild } from '@angular/core';
 import { SearchInput } from '../ui/search-input/search-input';
 import { FilmsService } from '../../data/services/films';
-import { map, Observable, Subscription } from 'rxjs';
+import { map, Observable, of, Subscription } from 'rxjs';
 import { IFilm, ISearchFilmsRes } from '../../data/interfaces/film.interface';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
@@ -40,10 +40,15 @@ export class Header implements OnDestroy {
 
   onSearchInput(e: string){
 
+    if(e.length < 3){
+      
+      this.searchedFilms$ = of(null)
+    }
+
     if(e.length > 2){
 
       this.subscriptions = this.filmsService.searchFilms(e).subscribe()
-
+      this.searchedFilms$ = this.filmsService.searchedFilms
     } 
   }
 
