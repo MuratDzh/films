@@ -18,6 +18,10 @@
     height: calc((100dvw - 2 * 4rem - 4 * 1rem) / 5 * 555 / 360);
     overflow: hidden;
     border-radius: 1rem;
+
+    &:hover{
+        box-shadow: 0px 0px 20px 0 rgba($color: white, $alpha: 0.7);
+    }
 }
 
 .poster-preview-img{

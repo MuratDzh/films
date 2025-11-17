@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, inject, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { IFilterFormOpt, IFilterOpt } from '../../data/interfaces/film.interface';
-import { switchMap, tap } from 'rxjs';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { IFilterFormOpt } from '../../data/interfaces/film.interface';
+import { tap } from 'rxjs';
 import { FilmsService } from '../../data/services/films';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
@@ -63,7 +63,6 @@ export class FilterLayout implements OnInit {
     this.form.getRawValue()
     
     this.form.valueChanges.pipe(
-      tap(console.log),
       tap(()=>this.onFormValue()),
       takeUntilDestroyed()
     )
@@ -82,7 +81,6 @@ export class FilterLayout implements OnInit {
   }
 
   onFormValue(){
-    console.log(this.form.value);
     
     this.formValue.emit(this.form.value as IFilterFormOpt)
   }
