@@ -46,7 +46,6 @@ export class Header implements OnDestroy {
       this.searchedFilms$ = of(null)
 
       if(!this.filmsService.isSearched){
-        console.log("yyy");
         this.filmsService.searchedFilmsSub.next(null)
       }
     }
