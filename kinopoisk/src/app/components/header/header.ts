@@ -4,7 +4,7 @@ import { FilmsService } from '../../data/services/films';
 import { map, Observable, of, Subscription } from 'rxjs';
 import { IFilm, ISearchFilmsRes } from '../../data/interfaces/film.interface';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, ActivatedRouteSnapshot, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -38,11 +38,17 @@ export class Header implements OnDestroy {
 
   }
 
+
   onSearchInput(e: string){
 
     if(e.length < 3){
       
       this.searchedFilms$ = of(null)
+
+      if(!this.filmsService.isSearched){
+        console.log("yyy");
+        this.filmsService.searchedFilmsSub.next(null)
+      }
     }
 
     if(e.length > 2){

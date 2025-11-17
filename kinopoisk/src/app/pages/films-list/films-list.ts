@@ -28,6 +28,8 @@ export class FilmsList {
   currentPage: number = 1
 
   constructor(){
+    this.filmsService.isSearched = false
+
     if(!this.filmsService.filteredFilmsSub.value){
       this.onFilteredOpt()
     } else {
