@@ -10,13 +10,6 @@
 @import './app/styles/normalize';
 
 @font-face {
-  font-family: "Lato";
-  src: url(../public/fonts/Lato-Regular.woff2) format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
   font-family: "Roboto";
   src: url(../public/fonts/Roboto.woff2) format("woff2");
   font-weight: 400;
@@ -27,21 +20,6 @@
   font-family: "Open Sans";
   src: url(../public/fonts/OpenSans.woff2) format("woff2");
   font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Agan";
-  src: url(../public/fonts/Agan45.woff2) format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Agan";
-  src: url(../public/fonts/Agan75.woff2) format("woff2");
-  font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
@@ -92,7 +70,7 @@ body {
 
 *::-webkit-scrollbar-track {
   border-radius: 0.2rem;
-  background-color: white;
+  background-color: black;
 }
 
 html, body { height: 100%; }

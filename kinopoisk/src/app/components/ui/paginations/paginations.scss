@@ -1,0 +1,25 @@
+:host{
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.pagination-btn{
+    height: 2rem;
+    width: 2rem;
+    border: none;
+    border-radius: 1rem;
+    background-color: rgb(140, 140, 140);
+
+    &:hover{
+        background-color: white;
+    }
+}
+
+.active{
+    background-color: white;
+    cursor: none;
+    font-size: 1.2rem;
+    font-weight: 500;
+}

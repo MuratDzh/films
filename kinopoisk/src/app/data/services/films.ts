@@ -1,15 +1,24 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
-import { IFilm, IFilmFull, IFilmsRes, IFilterFormOpt, IFilterOpt, ISearchFilmsRes } from '../interfaces/film.interface';
+import { IFilm, IFilmFull, IFilmsRes, IFilterFormOpt, ISearchFilmsRes } from '../interfaces/film.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FilmsService {
+  
   private http = inject(HttpClient)
 
   private url = "https://kinopoiskapiunofficial.tech/api";
+
+  filteredFilmsSub = new BehaviorSubject<IFilm[]|null>(null)
+  currentPage = signal(1)
+  pages = signal(1)
+
+  searchedFilmsSub = new BehaviorSubject<ISearchFilmsRes|null>(null)
+  searchedFilms = this.searchedFilmsSub.asObservable()
+  isSearched = false
 
   getFilms(opt: IFilterFormOpt|null = null, page: number = 1): Observable<IFilmsRes>{
     return this.http.get<IFilmsRes>(`${this.url}/v2.2/films`, {
@@ -25,7 +34,13 @@ export class FilmsService {
         keyword: opt?.keyword ?? "",
         page
       }
-    })
+    }).pipe(
+      tap(v => {
+        this.currentPage.set(page)
+        this.pages.set(v.totalPages)
+        this.filteredFilmsSub.next(v.items)
+      })
+    )
   }
 
   getFilmById(id: number): Observable<IFilmFull>{
@@ -42,7 +57,11 @@ export class FilmsService {
         keyword,
         page
       }
-    })
+    }).pipe(tap(v => {
+      this.isSearched = true
+      this.currentPage.set(page)
+      this.pages.set(v.pagesCount)
+      this.searchedFilmsSub.next(v)}))
   }
 
 }

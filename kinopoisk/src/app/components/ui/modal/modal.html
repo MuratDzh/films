@@ -1,0 +1,32 @@
+<div class="film-description_wrapper">
+    <div class="img-and-close-btn_wrapper">
+        <img height="555" width="360" [src]="film.posterUrl" [alt]="film.nameRu||film.nameOriginal||film.nameEn">
+        <button class="close-btn btn" (click)="onClose()">
+            <svg xmlns="http://www.w3.org/2000/svg"  viewBox="2 -8 50 50" width="20px" height="20px"><path d="M 9.15625 6.3125 L 6.3125 9.15625 L 22.15625 25 L 6.21875 40.96875 L 9.03125 43.78125 L 25 27.84375 L 40.9375 43.78125 L 43.78125 40.9375 L 27.84375 25 L 43.6875 9.15625 L 40.84375 6.3125 L 25 22.15625 Z"/></svg>
+        </button>
+    </div>
+    <div class="description_wrapper">
+        <h2>{{film.nameRu||film.nameEn||film.nameOriginal}}</h2>
+        <div class="description">
+            <p>{{film.year}}</p>
+            <p>
+                @if(film.ratingImdb){
+                    <span>Imdb: {{film.ratingImdb}} </span>
+                }
+                <span>Кинопоиск: {{film.ratingKinopoisk}}</span>
+            </p>
+            <p class="p">
+                @for (genre of film.genres; track $index) {
+                    <span class="genre">{{genre.genre}}</span>
+                }
+            </p>
+            <p class="p">
+                @for (country of film.countries; track $index) {
+                    <span class="country">{{country.country}}</span>
+                }
+            </p>
+        </div>
+        <button class="btn" (click)="onClick()">Подробнее</button>
+    </div>
+    
+</div>

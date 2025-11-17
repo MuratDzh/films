@@ -1,6 +1,5 @@
 @if(film$|async; as film){
 
-    <!-- <img [src]="film.posterUrl" alt="posterUrl"> -->
     <div class="poster-and-info_wrapper">
         <div class="poster_wrapper">
             <img [src]="film.posterUrlPreview" alt="posterUrlPreview" width="360" height="540">
@@ -54,4 +53,9 @@
         <h2>Описание</h2>
         <p>{{film.description}}</p>
     </div>
+}
+
+
+@if(history){
+    <button (click)="getBack()" class="btn">К списку</button>
 }

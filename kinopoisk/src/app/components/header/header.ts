@@ -1,7 +1,7 @@
-import { Component, HostListener, inject, signal, ViewChild } from '@angular/core';
+import { Component, HostListener, inject, OnDestroy, signal, ViewChild } from '@angular/core';
 import { SearchInput } from '../ui/search-input/search-input';
 import { FilmsService } from '../../data/services/films';
-import { map, Observable } from 'rxjs';
+import { map, Observable, Subscription } from 'rxjs';
 import { IFilm, ISearchFilmsRes } from '../../data/interfaces/film.interface';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
@@ -12,21 +12,23 @@ import { RouterLink } from '@angular/router';
   templateUrl: './header.html',
   styleUrl: './header.scss',
 })
-export class Header {
+export class Header implements OnDestroy {
 
   filmsService = inject(FilmsService)
 
   @ViewChild("input", {read: SearchInput})
   input!:SearchInput
 
-  searchedFilms$: Observable<ISearchFilmsRes>|null = null
+  searchedFilms$: Observable<ISearchFilmsRes|null> = this.filmsService.searchedFilms
+  subscriptions!: Subscription
+
   isHidden = signal(false)
 
   @HostListener("window:click", ['$event'])
   onWinClick(e: PointerEvent){
 
     
-    if(((e.target as HTMLElement).offsetParent as HTMLDivElement).className == "search-wrapper"){
+    if(((e.target as HTMLElement).offsetParent as HTMLDivElement)?.className == "search-wrapper"){
 
       this.isHidden.set(false)
       
@@ -40,12 +42,14 @@ export class Header {
 
     if(e.length > 2){
 
-      this.searchedFilms$ = this.filmsService.searchFilms(e)
+      this.subscriptions = this.filmsService.searchFilms(e).subscribe()
 
-    } else {
+    } 
+  }
 
-      this.searchedFilms$ = null
-
+  ngOnDestroy(): void {
+    if(this.subscriptions){
+      this.subscriptions.unsubscribe()
     }
   }
 

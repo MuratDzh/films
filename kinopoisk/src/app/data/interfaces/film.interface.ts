@@ -28,7 +28,7 @@ export interface IFilm {
 export interface IFilmsRes {
     items: IFilm[],
     total: number,
-    totalPage: number
+    totalPages: number
 }
 
 export interface ISearchFilmsRes {

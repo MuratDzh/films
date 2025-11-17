@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FilmsService } from '../../data/services/films';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, switchMap, tap } from 'rxjs';
-import { IFilm, IFilmFull } from '../../data/interfaces/film.interface';
+import { IFilmFull } from '../../data/interfaces/film.interface';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -16,13 +16,23 @@ export class Film {
 
   filmsService = inject(FilmsService)
   route = inject(ActivatedRoute)
+  router = inject(Router)
 
   film$: Observable<IFilmFull>|null
 
+  history: History = history
+
   constructor(){
     this.film$ = this.route.params.pipe(
-      tap(({id})=>console.log("ID", id)),
       switchMap(({id}) => this.filmsService.getFilmById(id))
     )
+  }
+
+  getBack(){
+    if(this.filmsService.isSearched){
+      this.router.navigateByUrl('/searched-films')
+    } else {
+      this.router.navigateByUrl('/films')
+    }
   }
 }

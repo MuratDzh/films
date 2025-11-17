@@ -34,6 +34,24 @@ td,th{
     border: 1px solid rgb(140, 140, 140);
 }
 
+.discription_wrapper{
+    margin-bottom: 1rem;
+}
+
+.btn{
+    width: max-content;
+    padding: 0.2rem 2rem;
+    border-radius: 1.2rem;
+    border: 1.5px solid white;
+    background-color: transparent;
+    color: white;
+
+    &:hover{
+        background-color: white;
+        color: black;
+    }
+}
+
 @media (max-width: 980px) {
     .poster-and-info_wrapper{
         gap: 2rem;
@@ -54,14 +72,18 @@ td,th{
     }
 }
 
-@media(max-width: 426px){
+@media(max-width: 431px){
     :host{
         gap: 0.5rem;
-        padding-top: 0.5rem;
+        padding-block: 0.5rem 1.5rem;
     }
     .poster-and-info_wrapper{
         display: grid;
         gap: 1rem;
+    }
+
+    .discription_wrapper{
+        margin-bottom: 0.5rem;
     }
 
 }

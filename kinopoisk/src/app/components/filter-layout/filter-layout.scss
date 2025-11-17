@@ -14,9 +14,7 @@ input{
     color: white;
 
     &:hover{
-        // border-color: rgb(140, 140, 140);
         box-shadow: 0px 0px 20px 0 rgba($color: white, $alpha: 0.7);
-        // box-shadow: 0px 0px 20px 0 rgb(140,140,140);
     }
 }
 
@@ -37,6 +35,16 @@ select{
         border-color: rgb(140, 140, 140);
        
     }
+}
+
+.year_wrapper{
+    display: flex;
+    gap: 1rem;
+}
+
+.rating_wrapper{
+    display: flex;
+    gap: 1rem;
 }
 
 

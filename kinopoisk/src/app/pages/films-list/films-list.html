@@ -4,20 +4,24 @@
 <div class="films-list_wrapper">
 
             
-        @for (film of films; track $index) {
+    @for (film of films; track $index) {
             
-            <div class="film_wrapper">
-                <div class="poster-preview-img_wrapper">
-                    <img [src]="film.posterUrlPreview" [alt]="film.nameRu" height="555" class="poster-preview-img">
-                </div>
-                <h3>{{film.nameRu||film.nameOriginal}}</h3>
-            </div>    
-        }
+        <div class="film_wrapper" (click)="getFilmDescription(film)">
+            <div class="poster-preview-img_wrapper">
+                <img [src]="film.posterUrlPreview" [alt]="film.nameRu" height="555" class="poster-preview-img">
+            </div>
+            <h3>{{film.nameRu||film.nameOriginal}}</h3>
+        </div>    
+    }
 
         
-    </div>
+</div>
+
+    @if (pages && pages > 1) {
+        <app-paginations [pagesCount] = "pages" (checkedPage)="onCurrentPage($event)" [currentPage] = currentPage></app-paginations>
+    }
+
 } @else {
     
     <spinner class="spinner"></spinner>
 }
-            

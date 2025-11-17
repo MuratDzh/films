@@ -1,0 +1,82 @@
+:host{
+    display: grid;
+    padding-block: 1rem;
+    gap: 2rem;
+}
+
+.films-list_wrapper{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.5rem 1rem;
+}
+
+.poster-preview-img_wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: calc((100dvw - 2 * 4rem - 4 * 1rem) / 5 * 555 / 360);
+    overflow: hidden;
+    border-radius: 1rem;
+}
+
+.poster-preview-img{
+    min-width: 100%;
+    height: 100%;
+}
+
+.spinner{
+    margin-top: 2rem;
+    display: flex;
+    
+    justify-content: center;
+}
+
+@media(max-width: 980px){
+    :host{
+        padding-block: 0.5rem;
+    }
+
+   .films-list_wrapper{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        justify-content: space-between;
+        gap: 1rem;
+    }
+
+    .poster-preview-img_wrapper{
+        height: calc((100dvw - 2 * 2rem - 3 * 1rem) / 4 * 555 / 360);
+    }
+}
+
+@media(max-width: 768px){
+    .films-list_wrapper{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .poster-preview-img_wrapper{
+        height: calc((100dvw - 2 * 2rem - 2 * 1rem) / 3 * 555 / 360);
+    }
+}
+
+@media(max-width: 520px){
+    .films-list_wrapper{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .poster-preview-img_wrapper{
+        height: calc((100dvw - 2 * 2rem - 1rem) / 2 * 555 / 360);
+    }
+}
+
+@media(max-width: 426px){
+    :host{
+        font-size: 12px;
+    }
+
+    .poster-preview-img_wrapper{
+        height: calc((100dvw - 2 * 1rem - 1rem) / 2 * 555 / 360);
+    }
+}

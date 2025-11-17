@@ -31,41 +31,42 @@
                 <option [value]="order[0]">{{order[1]}}</option>
             }
         </select>
-        
-        <select formControlName="ratingFrom">
-            <option value="">От</option>
-             @for (rating of ratings; track $index) {
-                    
-                <option [value]="rating">{{rating}}</option>
-            }
-        </select>
-        
-        <select formControlName="ratingTo">
-            <option value="">До</option>
-             @for (rating of ratings; track $index) {
-                    
-                <option [value]="rating">{{rating}}</option>
-            }
-        </select>
-       
-        <select formControlName="yearFrom">
-            <option value="">Все годы</option>
-
-             @for (year of years; track $index) {
-                    
-                <option [value]="year">{{year}}</option>
-            }
-        </select>
-
-        <select formControlName="yearTo">
-            <option value="">Все годы</option>
-
-            @for (year of years; track $index) {
-                    
-                <option [value]="year">{{year}}</option>
-            }
-        </select>
+        <div class="rating_wrapper">
+            <select formControlName="ratingFrom">
+                <option value="">От</option>
+                @for (rating of ratings; track $index) {
+                        
+                    <option [value]="rating">{{rating}}</option>
+                }
+            </select>
             
+            <select formControlName="ratingTo">
+                <option value="">До</option>
+                @for (rating of ratings; track $index) {
+                        
+                    <option [value]="rating">{{rating}}</option>
+                }
+            </select>
+        </div>
+        <div class="year_wrapper">
+            <select formControlName="yearFrom">
+                <option value="">Все годы</option>
+
+                @for (year of years; track $index) {
+                        
+                    <option [value]="year">{{year}}</option>
+                }
+            </select>
+
+            <select formControlName="yearTo">
+                <option value="">Все годы</option>
+
+                @for (year of years; track $index) {
+                        
+                    <option [value]="year">{{year}}</option>
+                }
+            </select>
+        </div> 
         <input type="text" formControlName="keyword" placeholder="Содержит ...">
         <button class="btn" type="reset" (click)="onReset()">Сбросить</button>
     </form>
